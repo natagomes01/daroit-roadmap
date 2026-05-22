@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Daroit Real Estate — Roadmap de Implantação · Albatroz Studio</title>
+<meta name="description" content="Status das entregas da implantação de IA — Daroit Real Estate. Apresentação Albatroz Studio." />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Kameron:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --c-army:#696858; --c-offwhite:#F2EDE4; --c-charcoal:#202020; --c-slate:#5F6870;
+  --c-orange:#F04500; --c-orange-400:#F07040;
+  --c-medium-2:#7A7A68; --c-medium-3:#989880; --c-medium-4:#BEBEBD;
+  --c-bg-warm:#E8DDD0; --c-paper:#FCFCFC; --c-dark-2:#3D3D3D;
+  --c-done:#5C7049;        /* verde-oliva para status concluído */
+  --c-done-soft:#E2E8DA;
+
+  --font-headline:"Anton","Helvetica Neue Condensed Bold","Impact",sans-serif;
+  --font-highlight:"Kameron",Georgia,"Times New Roman",serif;
+  --font-body:"Raleway","Helvetica Neue",Arial,sans-serif;
+  --font-mono:ui-monospace,"SF Mono",Menlo,monospace;
+
+  --ls-caps:0.12em; --ls-caps-loose:0.18em;
+  --ease-out:cubic-bezier(0.22,0.61,0.36,1);
+  --shadow-skeu:10px 10px 86px 1px rgba(113,83,25,.10);
+  --shadow-drop:0 6px 24px rgba(32,32,32,.08);
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;}
+body{
+  font-family:var(--font-body);
+  background:var(--c-charcoal);
+  color:var(--c-charcoal);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow:hidden;
+}
+
+/* ---------- DECK ---------- */
+.deck{position:fixed;inset:0;overflow:hidden;}
+.slide{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:clamp(28px,5vw,88px);
+  opacity:0;visibility:hidden;
+  transform:translateY(14px);
+  transition:opacity .5s var(--ease-out),transform .5s var(--ease-out),visibility 0s linear .5s;
+  overflow-y:auto;
+}
+.slide.active{opacity:1;visibility:visible;transform:none;transition:opacity .5s var(--ease-out),transform .5s var(--ease-out);}
+.slide-inner{width:100%;max-width:1180px;margin:0 auto;}
+
+/* themes */
+.bg-offwhite{background:var(--c-offwhite);color:var(--c-charcoal);}
+.bg-army{background:var(--c-army);color:var(--c-offwhite);}
+.bg-dark{background:var(--c-charcoal);color:var(--c-offwhite);}
+.bg-band{background:var(--c-bg-warm);color:var(--c-charcoal);}
+
+/* top stripe */
+.top-stripe{position:fixed;top:0;left:0;right:0;height:6px;background:var(--c-orange);z-index:60;}
+
+/* ---------- TYPE ---------- */
+.eyebrow{font-family:var(--font-body);font-weight:700;font-size:clamp(11px,1.1vw,13px);
+  letter-spacing:var(--ls-caps-loose);text-transform:uppercase;color:var(--c-orange);margin-bottom:18px;}
+.bg-army .eyebrow,.bg-dark .eyebrow{color:var(--c-orange-400);}
+.display{font-family:var(--font-headline);font-weight:400;text-transform:uppercase;
+  font-size:clamp(46px,8.5vw,118px);line-height:.92;letter-spacing:-.01em;}
+.h-section{font-family:var(--font-headline);font-weight:400;text-transform:uppercase;
+  font-size:clamp(34px,5.4vw,68px);line-height:.96;letter-spacing:.004em;}
+.h-edit{font-family:var(--font-highlight);font-weight:700;font-size:clamp(28px,3.6vw,52px);line-height:1.08;}
+h3{font-family:var(--font-highlight);font-weight:700;font-size:clamp(19px,1.7vw,24px);line-height:1.2;}
+.lead{font-family:var(--font-highlight);font-weight:400;font-style:italic;
+  font-size:clamp(18px,2.1vw,28px);line-height:1.4;}
+p{font-size:clamp(14px,1.15vw,17px);line-height:1.6;}
+.p-lg{font-size:clamp(16px,1.4vw,20px);line-height:1.55;}
+.muted{color:var(--c-slate);}
+.bg-army .muted,.bg-dark .muted{color:var(--c-medium-4);}
+.mono{font-family:var(--font-mono);font-size:.78em;letter-spacing:-.02em;}
+
+.rule{width:220px;max-width:60%;height:3px;background:var(--c-orange);border:0;margin:22px 0;}
+
+/* ---------- CAPA ---------- */
+.cover-logo{height:clamp(30px,3.4vw,42px);width:auto;margin-bottom:auto;}
+.cover-meta{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px 32px;align-items:baseline;
+  padding-top:26px;border-top:1px solid rgba(242,237,228,.22);}
+.cover-meta .k{font-weight:700;letter-spacing:var(--ls-caps);text-transform:uppercase;font-size:12px;color:var(--c-medium-4);}
+.cover-meta .v{font-size:clamp(14px,1.2vw,17px);}
+
+/* ---------- METRICS ---------- */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:34px;}
+.metric{background:var(--c-paper);border-top:3px solid var(--c-orange);padding:24px 20px;box-shadow:var(--shadow-skeu);}
+.bg-army .metric,.bg-dark .metric{background:rgba(255,255,255,.06);box-shadow:none;border-top-color:var(--c-orange-400);}
+.metric .num{font-family:var(--font-headline);font-size:clamp(38px,4.6vw,60px);line-height:1;color:var(--c-charcoal);}
+.bg-army .metric .num,.bg-dark .metric .num{color:var(--c-offwhite);}
+.metric .lbl{margin-top:10px;font-size:13px;line-height:1.4;color:var(--c-slate);}
+.bg-army .metric .lbl,.bg-dark .metric .lbl{color:var(--c-medium-4);}
+
+/* ---------- TIMELINE ---------- */
+.timeline{margin-top:30px;border-left:2px solid rgba(242,237,228,.25);padding-left:0;}
+.bg-offwhite .timeline,.bg-band .timeline{border-left-color:rgba(32,32,32,.16);}
+.tl-row{position:relative;padding:0 0 22px 30px;}
+.tl-row:last-child{padding-bottom:0;}
+.tl-row::before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;
+  background:var(--c-done);box-shadow:0 0 0 4px rgba(92,112,73,.18);}
+.tl-row .date{font-family:var(--font-mono);font-weight:700;font-size:13px;letter-spacing:.02em;color:var(--c-orange);}
+.bg-army .tl-row .date,.bg-dark .tl-row .date{color:var(--c-orange-400);}
+.tl-row .txt{font-size:clamp(14px,1.15vw,17px);margin-top:2px;}
+.tl-row .sub{font-size:13px;margin-top:3px;color:var(--c-slate);}
+.bg-army .tl-row .sub,.bg-dark .tl-row .sub{color:var(--c-medium-4);}
+
+/* ---------- STATUS PILL ---------- */
+.pill{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;
+  letter-spacing:.04em;text-transform:uppercase;padding:5px 11px;border-radius:999px;white-space:nowrap;}
+.pill .dot{width:8px;height:8px;border-radius:50%;}
+.pill.done{background:var(--c-done-soft);color:#2F3D24;} .pill.done .dot{background:var(--c-done);}
+.pill.prog{background:rgba(240,69,0,.12);color:#9A3000;} .pill.prog .dot{background:var(--c-orange);}
+.pill.bonus{background:var(--c-orange);color:#fff;} .pill.bonus .dot{background:#fff;}
+.pill.scope{background:rgba(95,104,112,.16);color:#3D464C;} .pill.scope .dot{background:var(--c-slate);}
+
+/* ---------- CHECKLIST TABLE ---------- */
+.ck{margin-top:26px;width:100%;border-collapse:collapse;}
+.ck th{text-align:left;font-family:var(--font-body);font-weight:700;font-size:11px;letter-spacing:var(--ls-caps);
+  text-transform:uppercase;color:var(--c-slate);padding:0 14px 12px;border-bottom:2px solid var(--c-charcoal);}
+.ck td{padding:13px 14px;border-bottom:1px solid rgba(32,32,32,.1);vertical-align:middle;font-size:clamp(13px,1.05vw,15.5px);}
+.ck td .cl{font-family:var(--font-mono);font-size:12px;color:var(--c-slate);}
+.ck tr td:last-child{text-align:right;white-space:nowrap;}
+
+/* ---------- CARD LIST (slide 5) ---------- */
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:30px;}
+.cards-2{grid-template-columns:1fr 1fr;gap:24px;max-width:980px;}
+.card{background:var(--c-paper);padding:clamp(24px,2.4vw,32px);box-shadow:var(--shadow-drop);display:flex;flex-direction:column;gap:14px;border-top:3px solid var(--c-medium-4);}
+.card.is-bonus{border-top-color:var(--c-orange);}
+.card .head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+.card h3{flex:1;font-size:clamp(20px,1.9vw,26px);}
+.card p{color:var(--c-slate);font-size:clamp(15px,1.25vw,17.5px);line-height:1.55;}
+
+/* ---------- TWO COL ---------- */
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(28px,4vw,64px);align-items:center;}
+
+/* close symbol */
+.sym{height:clamp(36px,4vw,52px);width:auto;opacity:.95;margin-bottom:26px;}
+
+/* ---------- NAV / CHROME ---------- */
+.chrome{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;align-items:center;
+  justify-content:space-between;padding:14px clamp(20px,4vw,40px);pointer-events:none;}
+.dots{display:flex;gap:9px;pointer-events:auto;}
+.dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(128,128,128,.4);cursor:pointer;padding:0;transition:all .2s var(--ease-out);}
+.dots button.on{background:var(--c-orange);width:24px;border-radius:5px;}
+.nav-btns{display:flex;gap:10px;pointer-events:auto;}
+.nav-btns button{width:44px;height:44px;border-radius:50%;border:1px solid rgba(128,128,128,.35);
+  background:rgba(252,252,252,.85);color:var(--c-charcoal);font-size:18px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:all .18s var(--ease-out);}
+.nav-btns button:hover{background:var(--c-orange);color:#fff;border-color:var(--c-orange);}
+.nav-btns button:active{transform:scale(.95);}
+.counter{position:fixed;top:18px;right:clamp(20px,4vw,40px);z-index:50;font-family:var(--font-mono);
+  font-size:12px;color:var(--c-slate);letter-spacing:.06em;mix-blend-mode:difference;color:#bbb;}
+.progress{position:fixed;top:6px;left:0;height:2px;background:var(--c-orange);z-index:60;width:0;transition:width .4s var(--ease-out);}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:860px){
+  .metrics{grid-template-columns:repeat(2,1fr);}
+  .cards{grid-template-columns:1fr;}
+  .split{grid-template-columns:1fr;gap:24px;}
+  .ck thead{display:none;}
+  .ck,.ck tbody,.ck tr,.ck td{display:block;width:100%;}
+  .ck tr{padding:13px 0;border-bottom:1px solid rgba(32,32,32,.12);}
+  .ck td{border:0;padding:2px 0;}
+  .ck tr td:last-child{text-align:left;margin-top:8px;}
+}
+@media (max-width:860px){
+  .cards-2{grid-template-columns:1fr;max-width:none;}
+}
+@media (max-width:520px){
+  .metrics{grid-template-columns:1fr 1fr;gap:12px;}
+  .slide{padding:64px 22px 80px;justify-content:flex-start;}
+  /* capa — texto maior e legível no celular */
+  .eyebrow{font-size:13px;margin-bottom:14px;}
+  .display{font-size:clamp(60px,16vw,82px);}
+  .lead{font-size:20px;line-height:1.42;}
+  .cover-meta{gap:14px 22px;padding-top:22px;}
+  .cover-meta .k{font-size:11.5px;}
+  .cover-meta .v{font-size:16.5px;}
+  .card p{font-size:16px;}
+  .card h3{font-size:21px;}
+}
+@media (max-height:560px) and (min-width:861px){
+  .slide{justify-content:flex-start;padding-top:56px;}
+}
+.hint{position:fixed;bottom:64px;left:50%;transform:translateX(-50%);z-index:50;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:#999;opacity:.8;transition:opacity .4s;}
+@media (max-width:860px){.counter{display:none;}}
+</style>
+</head>
+<body>
+<div class="top-stripe"></div>
+<div class="progress" id="progress"></div>
+<div class="counter" id="counter">01 / 07</div>
+
+<div class="deck" id="deck">
+
+  <!-- 1 · CAPA -->
+  <section class="slide bg-army active">
+    <div class="slide-inner" style="display:flex;flex-direction:column;height:100%;">
+      <img class="cover-logo" src="assets/logo-horizontal--offwhite.svg" alt="Albatroz Studio" />
+      <div style="margin:auto 0;">
+        <div class="eyebrow">Roadmap de Implantação · IA de Atendimento</div>
+        <h1 class="display">Daroit<br>Real Estate</h1>
+        <hr class="rule" />
+        <p class="lead" style="max-width:680px;">Status das entregas da implantação — o que já está no ar e o que vem a seguir.</p>
+      </div>
+      <div class="cover-meta">
+        <div><span class="k">Cliente</span><br><span class="v">Daroit Real Estate</span></div>
+        <div><span class="k">Execução</span><br><span class="v">Albatroz Studio · NPG</span></div>
+        <div><span class="k">Consultoria comercial</span><br><span class="v">Carol Curto</span></div>
+        <div><span class="k">Reunião</span><br><span class="v">25 / 05 / 2026</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 · SUMÁRIO EXECUTIVO -->
+  <section class="slide bg-offwhite">
+    <div class="slide-inner">
+      <div class="eyebrow">Onde estamos</div>
+      <h2 class="h-edit" style="max-width:920px;">A implantação está <strong>operante e em produção</strong>. A partir de 22/05, a IA atende <strong>todos os leads novos</strong>.</h2>
+      <div class="metrics">
+        <div class="metric"><div class="num">11</div><div class="lbl">entregas concluídas no Notion</div></div>
+        <div class="metric"><div class="num">9/9</div><div class="lbl">frentes do contrato (escopo Albatroz) entregues ou em curso</div></div>
+        <div class="metric"><div class="num">22/05</div><div class="lbl">IA liberada para atender todos os leads</div></div>
+        <div class="metric"><div class="num">+1</div><div class="lbl">entrega bônus: conexão direta com o formulário da Meta</div></div>
+      </div>
+      <p class="muted" style="margin-top:26px;max-width:880px;">Agente <strong>“Dara”</strong> criado, personalizado e revisado · fluxo de pré-atendimento e qualificação rodando com agendamento automático · campanhas e promoções integradas · follow-up ajustado. Único item em finalização: a automação do Instagram, em reestruturação por mudança no código da Meta.</p>
+    </div>
+  </section>
+
+  <!-- 3 · TIMELINE -->
+  <section class="slide bg-dark">
+    <div class="slide-inner">
+      <div class="eyebrow">Linha do tempo</div>
+      <h2 class="h-section">Entregas concluídas</h2>
+      <div class="timeline">
+        <div class="tl-row"><div class="date">28 / 03</div><div class="txt">Onboarding / reunião de abertura</div><div class="sub">Persona “Dara”, tom de voz, compliance (RERA/DLD, LGPD), critérios de qualificação e roteamento.</div></div>
+        <div class="tl-row"><div class="date">28 / 04</div><div class="txt">Integração de campanhas e promoções vigentes na IA</div></div>
+        <div class="tl-row"><div class="date">29 / 04</div><div class="txt">Fluxo básico concluído + IA finalizada + testes</div><div class="sub">3 portas de entrada (anúncio, formulário Meta, orgânico) e agendamento automático via Cal.com.</div></div>
+        <div class="tl-row"><div class="date">05 / 05</div><div class="txt">PAI atualizado com o script comercial da Carol</div></div>
+        <div class="tl-row"><div class="date">09 / 05</div><div class="txt">Ajustes na IA + ajustes de texto/script e frase de finalização</div><div class="sub">Transferência, fuso horário, gatilhos de campanha (SOL-175 / SOL-171).</div></div>
+        <div class="tl-row"><div class="date">16 / 05</div><div class="txt">Revisão final do PAI</div></div>
+        <div class="tl-row"><div class="date">22 / 05</div><div class="txt">FUP ajustado e entregue + IA liberada para atender todos os leads novos</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · CHECKLIST CONTRATO -->
+  <section class="slide bg-offwhite">
+    <div class="slide-inner">
+      <div class="eyebrow">Contrato × entregue · escopo Albatroz (NPG)</div>
+      <h2 class="h-section">O que foi prometido</h2>
+      <table class="ck">
+        <thead><tr><th>Entregável (cláusula)</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Reunião de onboarding <span class="cl">1.2.IV</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
+          <tr><td>Agente de IA personalizado — “Dara” <span class="cl">1.2.V.f</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
+          <tr><td>Implantação da plataforma + pré-atendimento e qualificação <span class="cl">1.2.II.a/d</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
+          <tr><td>Agendamento automático (Cal.com) <span class="cl">1.2.II.a</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
+          <tr><td>Rotinas automatizadas — campanhas e promoções <span class="cl">1.2.II.e</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
+          <tr><td>Reengajamento / follow-up (FUP) <span class="cl">1.2.II.e</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
+          <tr><td>Infra · WhatsApp Business API <span class="cl">1.2.II.b</span></td><td><span class="pill done"><span class="dot"></span>Operante</span></td></tr>
+          <tr><td>Plataforma PWA (iOS/Android) <span class="cl">1.2.V.a</span></td><td><span class="pill done"><span class="dot"></span>Disponível</span></td></tr>
+          <tr><td>Reuniões de estruturação comercial — Carol <span class="cl">1.2.IV.a.ii</span></td><td><span class="pill done"><span class="dot"></span>Acima do mínimo</span></td></tr>
+          <tr><td>Multicanal · WhatsApp + Instagram <span class="cl">1.2.V.a</span></td><td><span class="pill prog"><span class="dot"></span>Instagram em finalização</span></td></tr>
+        </tbody>
+      </table>
+      <p class="muted" style="margin-top:18px;font-size:13px;">Os índices (ex.: <span class="mono">1.2.IV</span>) referem-se às cláusulas do contrato de prestação de serviços.</p>
+    </div>
+  </section>
+
+  <!-- 5 · RECENTES + BÔNUS -->
+  <section class="slide bg-band">
+    <div class="slide-inner">
+      <div class="eyebrow">Em finalização e bônus</div>
+      <h2 class="h-section">Próximos dias</h2>
+      <div class="cards cards-2">
+        <div class="card">
+          <div class="head"><h3>Automação do comentário</h3><span class="pill prog"><span class="dot"></span>22–23/05</span></div>
+          <p>Comentário no Instagram → direct → link do WhatsApp. A estrutura precisou ser reformulada por uma mudança no código da Meta; a automação está sendo concluída sobre a nova arquitetura.</p>
+        </div>
+        <div class="card is-bonus">
+          <div class="head"><h3>Formulário da Meta na IA</h3><span class="pill bonus"><span class="dot"></span>Bônus</span></div>
+          <p>Conexão direta entre o formulário da Meta e a IA, entregue até 25/05. Surgiu porque a Daroit decidiu descontinuar o RD Station — via originalmente prevista para os leads. <strong>Escopo não previsto inicialmente, entregue como bônus e fora do prazo de implantação.</strong></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · OBSERVAÇÃO SOBRE PRAZOS -->
+  <section class="slide bg-army">
+    <div class="slide-inner split">
+      <div>
+        <div class="eyebrow">Observação sobre prazos</div>
+        <h2 class="h-edit">O ritmo da implantação acompanhou as definições do cliente.</h2>
+      </div>
+      <div>
+        <p class="p-lg">O intervalo entre o onboarding e a primeira versão da IA em produção decorreu, predominantemente, do <strong>tempo de avaliação e aprovação do lado da Daroit</strong>: revisão dos scripts, atualização e aprovação do Kanban, definição de estruturas internas e devolução dos feedbacks de revisão do prompt.</p>
+        <hr class="rule" />
+        <p class="p-lg">Uma vez recebidos, <strong>os ajustes foram resolvidos prontamente pela Albatroz</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · ENCERRAMENTO -->
+  <section class="slide bg-dark">
+    <div class="slide-inner" style="text-align:center;display:flex;flex-direction:column;align-items:center;">
+      <img class="sym" src="assets/albatroz-symbol--offwhite.svg" alt="Albatroz" />
+      <div class="eyebrow">Implantação entregue · operação no ar</div>
+      <h2 class="display" style="font-size:clamp(58px,10vw,132px);">Dara está<br>atendendo.</h2>
+      <hr class="rule" style="margin-left:auto;margin-right:auto;" />
+      <p class="p-lg muted" style="max-width:620px;">Próximos passos: conclusão da automação do Instagram (comentário) e entrega do bônus de conexão com o formulário da Meta até segunda-feira.</p>
+      <p class="mono" style="margin-top:32px;color:var(--c-medium-4);">Albatroz Studio · nata@albatroz.studio</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="hint" id="hint">← → para navegar</div>
+<div class="chrome">
+  <div class="dots" id="dots"></div>
+  <div class="nav-btns">
+    <button id="prev" aria-label="Anterior">‹</button>
+    <button id="next" aria-label="Próximo">›</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var slides=Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total=slides.length, cur=0;
+  var dotsWrap=document.getElementById('dots');
+  var counter=document.getElementById('counter');
+  var progress=document.getElementById('progress');
+  var hint=document.getElementById('hint');
+
+  slides.forEach(function(_,i){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Slide '+(i+1));
+    b.addEventListener('click',function(){go(i);});
+    dotsWrap.appendChild(b);
+  });
+  var dots=Array.prototype.slice.call(dotsWrap.children);
+
+  function pad(n){return (n<10?'0':'')+n;}
+  function render(){
+    slides.forEach(function(s,i){s.classList.toggle('active',i===cur);});
+    dots.forEach(function(d,i){d.classList.toggle('on',i===cur);});
+    counter.textContent=pad(cur+1)+' / '+pad(total);
+    progress.style.width=((cur)/(total-1)*100)+'%';
+    // reset scroll of active slide
+    slides[cur].scrollTop=0;
+  }
+  function go(n){cur=Math.max(0,Math.min(total-1,n));render();}
+  function next(){if(cur<total-1)go(cur+1);}
+  function prev(){if(cur>0)go(cur-1);}
+
+  document.getElementById('next').addEventListener('click',next);
+  document.getElementById('prev').addEventListener('click',prev);
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key==='PageDown'||e.key===' '){e.preventDefault();next();}
+    else if(e.key==='ArrowLeft'||e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();prev();}
+    else if(e.key==='Home'){go(0);} else if(e.key==='End'){go(total-1);}
+    hideHint();
+  });
+
+  // touch swipe (ignore when the slide is being scrolled vertically)
+  var x0=null,y0=null;
+  document.addEventListener('touchstart',function(e){x0=e.touches[0].clientX;y0=e.touches[0].clientY;},{passive:true});
+  document.addEventListener('touchend',function(e){
+    if(x0===null)return;
+    var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>50 && Math.abs(dx)>Math.abs(dy)){ dx<0?next():prev(); hideHint(); }
+    x0=y0=null;
+  },{passive:true});
+
+  function hideHint(){if(hint){hint.style.opacity='0';}}
+  setTimeout(hideHint,4500);
+
+  render();
+})();
+</script>
+</body>
+</html>

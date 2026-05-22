@@ -1,0 +1,11 @@
+# Internos — NÃO publicar (repo é público)
+roadmap-entregas-implantacao.md
+_log/
+PLANO.md
+
+# Fonte comercial licenciada — não distribuir
+assets/fonts/
+
+# Sistema
+.DS_Store
+Thumbs.db
