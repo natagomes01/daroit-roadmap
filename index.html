@@ -128,6 +128,8 @@ p{font-size:clamp(14px,1.15vw,17px);line-height:1.6;}
 .ck td{padding:13px 14px;border-bottom:1px solid rgba(32,32,32,.1);vertical-align:middle;font-size:clamp(13px,1.05vw,15.5px);}
 .ck td .cl{font-family:var(--font-mono);font-size:12px;color:var(--c-slate);}
 .ck tr td:last-child{text-align:right;white-space:nowrap;}
+.ck td.grp{font-family:var(--font-body);font-weight:700;font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--c-army);padding:16px 14px 6px;border-bottom:2px solid var(--c-army);text-align:left!important;white-space:normal;}
 
 /* ---------- CARD LIST (slide 5) ---------- */
 .cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-top:30px;}
@@ -198,7 +200,7 @@ p{font-size:clamp(14px,1.15vw,17px);line-height:1.6;}
 <body>
 <div class="top-stripe"></div>
 <div class="progress" id="progress"></div>
-<div class="counter" id="counter">01 / 07</div>
+<div class="counter" id="counter">01 / 08</div>
 
 <div class="deck" id="deck">
 
@@ -227,10 +229,10 @@ p{font-size:clamp(14px,1.15vw,17px);line-height:1.6;}
       <div class="eyebrow">Onde estamos</div>
       <h2 class="h-edit" style="max-width:920px;">A implantação está <strong>operante e em produção</strong>. A partir de 22/05, a IA atende <strong>todos os leads novos</strong>.</h2>
       <div class="metrics">
-        <div class="metric"><div class="num">11</div><div class="lbl">entregas concluídas no Notion</div></div>
-        <div class="metric"><div class="num">9/9</div><div class="lbl">frentes do contrato (escopo Albatroz) entregues ou em curso</div></div>
+        <div class="metric"><div class="num">7</div><div class="lbl">reuniões no período — 4 adicionais, sem custo</div></div>
+        <div class="metric"><div class="num">100%</div><div class="lbl">entregáveis contratuais cumpridos — ambas as frentes</div></div>
         <div class="metric"><div class="num">22/05</div><div class="lbl">IA liberada para atender todos os leads</div></div>
-        <div class="metric"><div class="num">+1</div><div class="lbl">entrega bônus: conexão direta com o formulário da Meta</div></div>
+        <div class="metric"><div class="num">+3</div><div class="lbl">entregas além do escopo: Web App, Dashboard e conexão Meta</div></div>
       </div>
       <p class="muted" style="margin-top:26px;max-width:880px;">Agente <strong>“Dara”</strong> criado, personalizado e revisado · fluxo de pré-atendimento e qualificação rodando com agendamento automático · campanhas e promoções integradas · follow-up ajustado. Único item em finalização: a automação do Instagram, em reestruturação por mudança no código da Meta.</p>
     </div>
@@ -239,8 +241,8 @@ p{font-size:clamp(14px,1.15vw,17px);line-height:1.6;}
   <!-- 3 · TIMELINE -->
   <section class="slide bg-dark">
     <div class="slide-inner">
-      <div class="eyebrow">Linha do tempo</div>
-      <h2 class="h-section">Entregas concluídas</h2>
+      <div class="eyebrow">Entregas · frente técnica (IA)</div>
+      <h2 class="h-section">Frente técnica — IA</h2>
       <div class="timeline">
         <div class="tl-row"><div class="date">28 / 03</div><div class="txt">Onboarding / reunião de abertura</div><div class="sub">Persona “Dara”, tom de voz, compliance (RERA/DLD, LGPD), critérios de qualificação e roteamento.</div></div>
         <div class="tl-row"><div class="date">28 / 04</div><div class="txt">Integração de campanhas e promoções vigentes na IA</div></div>
@@ -253,15 +255,34 @@ p{font-size:clamp(14px,1.15vw,17px);line-height:1.6;}
     </div>
   </section>
 
-  <!-- 4 · CHECKLIST CONTRATO -->
+  <!-- 4 · FRENTE COMERCIAL (CAROL) -->
+  <section class="slide bg-band">
+    <div class="slide-inner">
+      <div class="eyebrow">Entregas · frente comercial</div>
+      <h2 class="h-section">Frente comercial — Carol Curto</h2>
+      <p class="p-lg" style="margin:8px 0 4px;">7 reuniões no período — <strong>4 adicionais, sem custo</strong>. Todos os entregáveis contratuais cumpridos; Dashboard de análise em implementação.</p>
+      <div class="timeline">
+        <div class="tl-row"><div class="date">03 / 04</div><div class="txt">Mapeamento da jornada do cliente + fluxo para o TI</div></div>
+        <div class="tl-row"><div class="date">08 / 04</div><div class="txt">Manual de Processos Comerciais V1</div><div class="sub">Revisado pela Daroit em 13/04 (Karlla e Fabiolla).</div></div>
+        <div class="tl-row"><div class="date">14 / 04</div><div class="txt">Modelo de planilha para importação de leads no CRM</div></div>
+        <div class="tl-row"><div class="date">24 / 04</div><div class="txt">Planilha de Indicadores Quantitativos Perpétuo</div></div>
+        <div class="tl-row"><div class="date">01 / 05</div><div class="txt">Biblioteca completa de scripts + Web App de gestão de scripts</div><div class="sub">Web App em parceria com Rafael Javaro — entrega adicional, sem custo.</div></div>
+        <div class="tl-row"><div class="date">20 / 05</div><div class="txt">Modelo padrão de histórico do cliente</div></div>
+        <div class="tl-row"><div class="date">22 / 05</div><div class="txt">Kanban comercial completo — funil de 15 etapas + tags</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · CHECKLIST CONTRATO -->
   <section class="slide bg-offwhite">
     <div class="slide-inner">
-      <div class="eyebrow">Contrato × entregue · escopo Albatroz (NPG)</div>
+      <div class="eyebrow">Contrato × entregue · ambas as frentes</div>
       <h2 class="h-section">O que foi prometido</h2>
       <table class="ck">
         <thead><tr><th>Entregável (cláusula)</th><th>Status</th></tr></thead>
         <tbody>
-          <tr><td>Reunião de onboarding <span class="cl">1.2.IV</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
+          <tr><td>Reunião de onboarding (conjunta) <span class="cl">1.2.IV</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
+          <tr><td colspan="2" class="grp">Frente técnica — IA (Albatroz)</td></tr>
           <tr><td>Agente de IA personalizado — “Dara” <span class="cl">1.2.V.f</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
           <tr><td>Implantação da plataforma + pré-atendimento e qualificação <span class="cl">1.2.II.a/d</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
           <tr><td>Agendamento automático (Cal.com) <span class="cl">1.2.II.a</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
@@ -269,15 +290,21 @@ p{font-size:clamp(14px,1.15vw,17px);line-height:1.6;}
           <tr><td>Reengajamento / follow-up (FUP) <span class="cl">1.2.II.e</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
           <tr><td>Infra · WhatsApp Business API <span class="cl">1.2.II.b</span></td><td><span class="pill done"><span class="dot"></span>Operante</span></td></tr>
           <tr><td>Plataforma PWA (iOS/Android) <span class="cl">1.2.V.a</span></td><td><span class="pill done"><span class="dot"></span>Disponível</span></td></tr>
-          <tr><td>Reuniões de estruturação comercial — Carol <span class="cl">1.2.IV.a.ii</span></td><td><span class="pill done"><span class="dot"></span>Acima do mínimo</span></td></tr>
           <tr><td>Multicanal · WhatsApp + Instagram <span class="cl">1.2.V.a</span></td><td><span class="pill prog"><span class="dot"></span>Instagram em finalização</span></td></tr>
+          <tr><td colspan="2" class="grp">Frente comercial — Carol Curto</td></tr>
+          <tr><td>Diagnóstico e estruturação de processos comerciais <span class="cl">1.2.I.a</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
+          <tr><td>Roteiros comerciais e scripts de abordagem <span class="cl">1.2.I.b</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
+          <tr><td>Playbooks, cadências e inteligência comercial <span class="cl">1.2.I.c</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
+          <tr><td>Acompanhamento de indicadores de performance <span class="cl">1.2.I.d</span></td><td><span class="pill done"><span class="dot"></span>Entregue</span></td></tr>
+          <tr><td>Calls de acompanhamento e treinamento comercial <span class="cl">1.2.I.e</span></td><td><span class="pill done"><span class="dot"></span>Concluído</span></td></tr>
+          <tr><td>Onboarding + 2 reuniões de estruturação <span class="cl">1.2.IV.a</span></td><td><span class="pill done"><span class="dot"></span>7 reuniões</span></td></tr>
         </tbody>
       </table>
       <p class="muted" style="margin-top:18px;font-size:13px;">Os índices (ex.: <span class="mono">1.2.IV</span>) referem-se às cláusulas do contrato de prestação de serviços.</p>
     </div>
   </section>
 
-  <!-- 5 · RECENTES + BÔNUS -->
+  <!-- 6 · RECENTES + BÔNUS -->
   <section class="slide bg-band">
     <div class="slide-inner">
       <div class="eyebrow">Em finalização e bônus</div>
@@ -295,7 +322,7 @@ p{font-size:clamp(14px,1.15vw,17px);line-height:1.6;}
     </div>
   </section>
 
-  <!-- 6 · OBSERVAÇÃO SOBRE PRAZOS -->
+  <!-- 7 · OBSERVAÇÃO SOBRE PRAZOS -->
   <section class="slide bg-army">
     <div class="slide-inner split">
       <div>
@@ -310,7 +337,7 @@ p{font-size:clamp(14px,1.15vw,17px);line-height:1.6;}
     </div>
   </section>
 
-  <!-- 7 · ENCERRAMENTO -->
+  <!-- 8 · ENCERRAMENTO -->
   <section class="slide bg-dark">
     <div class="slide-inner" style="text-align:center;display:flex;flex-direction:column;align-items:center;">
       <img class="sym" src="assets/albatroz-symbol--offwhite.svg" alt="Albatroz" />

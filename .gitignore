@@ -2,6 +2,11 @@
 roadmap-entregas-implantacao.md
 _log/
 PLANO.md
+_tools/
+_evidencia/
+*.docx
+*.pdf
+*.txt
 
 # Fonte comercial licenciada — não distribuir
 assets/fonts/
